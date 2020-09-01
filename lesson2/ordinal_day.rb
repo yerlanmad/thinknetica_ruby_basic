@@ -12,6 +12,6 @@ if year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)
 end
 
 ordinal_day = day
-months.each_with_index { |mm, index| ordinal_day += mm unless month < index + 2 }
+months.each.with_index(2) { |mm, index| ordinal_day += mm unless month < index }
 
 puts ordinal_day

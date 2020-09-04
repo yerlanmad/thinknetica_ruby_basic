@@ -18,11 +18,11 @@ class Train
   end
   
   def add_wagon
-    @wagons_amount += 1
+    @wagons_amount += 1 if speed == 0
   end
 
   def remove_wagon
-    @wagons_amount -= 1 if wagons_amount > 0
+    @wagons_amount -= 1 if wagons_amount > 0 && speed == 0
   end
 
   def accept(route)
@@ -34,14 +34,16 @@ class Train
   def forward
     return unless next_station
 
-    current_station.send(self, next_station)
+    current_station.send(self)
+    next_station.accept(self)
     @current_station_index += 1
   end
 
   def backward
     return unless previous_station
 
-    current_station.send(self, previous_station)
+    current_station.send(self)
+    previous_station.accept(self)
     @current_station_index -= 1
   end
 

@@ -2,5 +2,8 @@ lesson3/.rspec
 lesson3/spec
 part5/.rspec
 part5/spec
-part6
+part6/.rspec
+part6/spec
+part6/app.rb
+part6/main.rb
 .rubocop.yml

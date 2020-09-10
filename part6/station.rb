@@ -25,7 +25,12 @@ class Station
   def trains(type = nil)
     return @trains unless type
 
-    @trains.select { |train| train.type == type }
+    case type
+    when 'passenger'
+      @trains.select { |train| train.is_a? PassengerTrain }
+    when 'cargo'
+      @trains.select { |train| train.is_a? CargoTrain }
+    end
   end
 
   def send(train)

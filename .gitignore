@@ -7,3 +7,5 @@ part6/spec
 part6/app.rb
 part6/main.rb
 .rubocop.yml
+part7/.rspec
+part7/spec

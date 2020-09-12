@@ -46,10 +46,10 @@ class AppTest
     trains.each do |train|
       if train.class == PassengerTrain
         10.times { train.add_wagon(PassengerWagon.new(40)) }
-        train.each_wagon { |wagon| rand(40).times { wagon.take_place } }
+        train.each_wagon { |wagon| rand(40).times { wagon.occupy } }
       else
         7.times { train.add_wagon(CargoWagon.new(10_000)) }
-        train.each_wagon { |wagon| wagon.fill(rand(10_000)) }
+        train.each_wagon { |wagon| wagon.occupy(rand(10_000)) }
       end
     end
   end
@@ -67,14 +67,8 @@ class AppTest
 
   def display_wagons(train)
     puts 'Wagons:'
-    if train.class == PassengerTrain
-      train.each_wagon do |wagon, number|
-        puts "#{number}, #{wagon.class}, #{wagon.occupied_seats}, #{wagon.empty_seats}"
-      end
-    else
-      train.each_wagon do |wagon, number|
-        puts "#{number}, #{wagon.class}, #{wagon.occupied_volume}, #{wagon.empty_volume}"
-      end
+    train.each_wagon do |wagon, number|
+      puts "#{number}, #{wagon.class}, #{wagon.occupied}, #{wagon.empty_place}"
     end
   end
 end

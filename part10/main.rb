@@ -1,0 +1,8 @@
+require_relative 'modules/instance_counter'
+require_relative 'modules/manufacturer'
+require_relative 'modules/accessors'
+require_relative 'modules/validation'
+require_relative 'station'
+require_relative 'route'
+require_relative 'train'
+require_relative 'wagon'
